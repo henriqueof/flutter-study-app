@@ -11,21 +11,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          textTheme: TextTheme(
+            headline6: TextStyle(fontSize: 24.0, color: Colors.white),
+            bodyText1: TextStyle(fontSize: 16.0, color: Colors.white),
+            bodyText2: TextStyle(fontSize: 16.0, color: Colors.red),
+          )),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -34,15 +25,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -50,37 +32,146 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Icon(Icons.apps),
-              Text('HelloVPN'),
-              Icon(Icons.group_work)
+      body: Container(
+        padding: const EdgeInsets.only(top: 64.0),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFF282958),
+              Color(0xFF030416),
+            ],
+            stops: [
+              0.4,
+              0.9,
             ],
           ),
-          Text(
-            'Status: Not connected',
-            style: Theme.of(context).textTheme.headline4,
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(
+                      Icons.apps,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      print("Settings");
+                    },
+                  ),
+                  Text(
+                    'HelloVPN',
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.group_work,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      print("Location");
+                    },
+                  )
+                ],
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 72.0),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Status: ',
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      Text(
+                        'Not connected',
+                        style: Theme.of(context).textTheme.bodyText2,
+                      ),
+                    ]),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 24.0),
+                padding: const EdgeInsets.all(24.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(180),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xFF381DFA).withAlpha(20),
+                        blurRadius: 12.0,
+                        spreadRadius: 0.5,
+                        offset: Offset(
+                          0,
+                          3,
+                        ),
+                      ),
+                    ]),
+                child: Material(
+                  color: Colors.transparent,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(180),
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0xFFA29AFC),
+                          Color(0xFF381DFA),
+                        ],
+                      ),
+                    ),
+                    child: Container(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(180),
+                          color: Color(0xFF282958),
+                        ),
+                        child: Container(
+                          width: 180,
+                          height: 180,
+                          padding: const EdgeInsets.all(48.0),
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.power_settings_new,
+                                size: 64,
+                                color: Color(0xFFA29AFC),
+                              ),
+                              Text(
+                                'START',
+                                style: Theme.of(context).textTheme.bodyText1,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 72.0),
+                child: Column(
+                  children: <Widget>[
+                    Text('Select Location',
+                        style: Theme.of(context).textTheme.bodyText1)
+                  ],
+                ),
+              )
+            ],
           ),
-          Icon(Icons.power_settings_new)
-        ],
+        ),
       ),
     );
   }
