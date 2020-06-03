@@ -66,9 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Icons.apps,
                       color: Colors.white,
                     ),
-                    onPressed: () {
-                      print("Settings");
-                    },
+                    onPressed: () {},
                   ),
                   Text(
                     'HelloVPN',
@@ -79,31 +77,30 @@ class _MyHomePageState extends State<MyHomePage> {
                       Icons.group_work,
                       color: Colors.white,
                     ),
-                    onPressed: () {
-                      print("Location");
-                    },
-                  )
+                    onPressed: () {},
+                  ),
                 ],
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 72.0),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        'Status: ',
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                      Text(
-                        'Not connected',
-                        style: Theme.of(context).textTheme.bodyText2,
-                      ),
-                    ]),
+              const SizedBox(height: 72),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Status: ',
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  Text(
+                    'Not connected',
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                ],
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 24.0),
-                padding: const EdgeInsets.all(24.0),
-                decoration: BoxDecoration(
+              InkResponse(
+                radius: 180,
+                onTap: () {},
+                child: Container(
+                  padding: const EdgeInsets.all(24.0),
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(180),
                     boxShadow: [
                       BoxShadow(
@@ -115,9 +112,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           3,
                         ),
                       ),
-                    ]),
-                child: Material(
-                  color: Colors.transparent,
+                    ],
+                  ),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(180),
@@ -137,11 +133,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           borderRadius: BorderRadius.circular(180),
                           color: Color(0xFF282958),
                         ),
-                        child: Container(
+                        child: SizedBox(
                           width: 180,
                           height: 180,
-                          padding: const EdgeInsets.all(48.0),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Icon(
                                 Icons.power_settings_new,
@@ -160,15 +156,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 72.0),
-                child: Column(
-                  children: <Widget>[
-                    Text('Select Location',
-                        style: Theme.of(context).textTheme.bodyText1)
-                  ],
-                ),
-              )
+              const SizedBox(height: 72),
+              Column(
+                children: <Widget>[
+                  Text('Select Location',
+                      style: Theme.of(context).textTheme.bodyText1),
+                  const SizedBox(height: 30),
+                  RaisedButton(
+                    onPressed: () {},
+                    child: Text("Ei manaaaa"),
+                  )
+                ],
+              ),
             ],
           ),
         ),
